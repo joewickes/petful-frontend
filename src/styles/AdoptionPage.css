@@ -1,0 +1,76 @@
+.meet-the-pets {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.meet-the-pets h1 {
+  width: auto;
+  padding: 20px;
+}
+
+.pets {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.dog-img, .cat-img {
+  display: flex;
+  justify-content: center;
+  border-radius: inherit;
+}
+
+.dog-img img, .cat-img img {
+  width: 100%;
+  padding: 15px;
+  border-radius: inherit;
+}
+
+.dog, .cat {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.dog-info, .cat-info, .people-names {
+  width: 100%;
+  display: flex;
+  border-radius: inherit;
+}
+
+.dog-info-list, .cat-info-list, .people-list {
+  width: 100%;
+  list-style-type: none;
+  padding: 0px 15px 15px 15px;
+  border-radius: inherit;
+}
+
+.dog-info-list li, .cat-info-list li, .people-list li {
+  padding-top: 15px;
+}
+
+.people {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.people-names {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.people-names p {
+  margin: 20px 0px;
+}
+
+.add-my-name {
+  width: auto;
+}

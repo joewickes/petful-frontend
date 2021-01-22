@@ -1,0 +1,43 @@
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-to-petful {
+  width: auto;
+  padding: 20px;
+}
+
+.main-photo {
+  width: 60%;
+}
+
+.main-photo img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.how-it-works {
+  width: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.how-it-works ul {
+  margin-top: 10px;
+  width: 250px;
+}
+
+.how-it-works ul li {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.start-adopting-now-btn {
+  display: flex;
+  width: auto;
+  align-items: center;
+  margin-top: 40px;
+}
