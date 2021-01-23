@@ -7,6 +7,7 @@ import catPhoto from './../images/sophia-ayame-yak7zIjk8mg-unsplash.jpg';
 
 class AdoptionPage extends React.Component {
   state = {
+    count: 1,
     addingName: false,
     myName: null,
     listOfNames: ['name1', 'name2', 'name3', 'name4', 'name5'],
@@ -25,13 +26,43 @@ class AdoptionPage extends React.Component {
       {Name: 'Steve', Breed: 'Calico', Gender: 'Male', Description: 'A beautiful speckled color, happy and mischevious', Age: '2yo', 'Journey To Us': 'Found wandering outside our door'}
     ],
     adoptionMessage: false,
+    timeout: null,
+  }
+
+  handleInterval = () => {
+    return setInterval(() => {
+      if (this.state.listOfNames[0] !== this.state.myName) {
+        const newListOfNames = this.state.listOfNames;
+        const newEndingName = newListOfNames.shift();
+        newListOfNames.push(newEndingName);
+
+        if (this.state.count % 2 === 0) {
+
+          const newListOfCats = this.state.listOfCatObjs;
+          const newEndingCat = newListOfCats.shift();
+          newListOfCats.push(newEndingCat);
+
+          this.setState({count: this.state.count + 1, listOfNames: newListOfNames, newListOfCats});
+        } else {
+            const newListOfDogs = this.state.listOfDogObjs;
+            const newEndingDog = newListOfDogs.shift();
+            newListOfDogs.push(newEndingDog);
+
+            this.setState({count: this.state.count + 1, listOfNames: newListOfNames, newListOfDogs});
+        }
+      }
+    }, 5000)
+  }
+
+  componentDidMount() {
+    this.handleInterval();
   }
 
   adoptDog = (e) => {
     e.preventDefault();
-
     const newDogsObjs = this.state.listOfDogObjs;
-    newDogsObjs.shift();
+    const adoptedDog = newDogsObjs.shift();
+    newDogsObjs.push(adoptedDog);
     const newListOfNames = this.state.listOfNames;
     newListOfNames.shift();
 
@@ -44,9 +75,9 @@ class AdoptionPage extends React.Component {
 
   adoptCat= (e) => {
     e.preventDefault();
-
     const newCatsObjs = this.state.listOfCatObjs;
-    newCatsObjs.shift();
+    const adoptedCat = newCatsObjs.shift();
+    newCatsObjs.push(adoptedCat);
     const newListOfNames = this.state.listOfNames;
     newListOfNames.shift();
 
@@ -70,12 +101,13 @@ class AdoptionPage extends React.Component {
   addNameToList = (e) => {
     e.preventDefault();
     const newListOfNames = this.state.listOfNames;
-    newListOfNames.unshift(this.state.myName);
+    newListOfNames.push(this.state.myName);
     this.setState(({addingName: false, listOfNames: newListOfNames}))
   }
 
 
   render() {
+
     return (
       <main>
         <section className="meet-the-pets">
