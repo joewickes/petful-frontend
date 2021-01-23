@@ -6,16 +6,24 @@ class AdoptionPage extends React.Component {
   state = {
     addingName: false,
     myName: null,
-    listOfNames: null,
+    listOfNames: ['name1', 'name2', 'name3', 'name4', 'name5'],
   }
 
   startAddingName = () => {
     this.setState({addingName: true});
   }
 
+  updateTextValue = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    this.setState({myName: e.target.value})
+  }
+
   addNameToList = (e) => {
     e.preventDefault();
-    this.setState(({}))
+    const newListOfNames = this.state.listOfNames;
+    newListOfNames.push(this.state.myName);
+    this.setState(({addingName: false, listOfNames: newListOfNames}))
   }
 
 
@@ -63,15 +71,16 @@ class AdoptionPage extends React.Component {
           <div className="people-names">
             <p>Up to Adopt: </p>
             <ul className="people-list">
-              <li>person1</li>
-              <li>person2</li>
+              {this.state.listOfNames.map(name => {
+                return (<li key={name}>{name}</li>)
+              })}
             </ul>
           </div>
           <div className="add-my-name">
             {this.state.addingName ? <form className="add-name-form" onSubmit={this.addNameToList}>
-              <input type="text" placeholder="Your Name" />
+              <input onChange={this.updateTextValue} className="add-name-text-box" type="text" placeholder="Your Name" />
             </form> : null}
-            {this.state.myName || this.state.addingName ? null : <button class="add-my-name-btn" onClick={this.startAddingName}>Add My Name</button>}
+            {this.state.myName || this.state.addingName ? null : <button className="add-my-name-btn" onClick={this.startAddingName}>Add My Name</button>}
           </div>
         </section>
 
