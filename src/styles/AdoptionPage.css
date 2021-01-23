@@ -18,6 +18,7 @@
 
 .dog-img, .cat-img {
   display: flex;
+  width: 90%;
   justify-content: center;
   border-radius: inherit;
 }
@@ -78,4 +79,20 @@
 .adopt-button-container {
   width: auto;
   margin-bottom: 15px;
+}
+
+@media all and (max-width: 800px) {
+  .pets {
+    flex-direction: column;
+    justify-content: none;
+    align-items: center;
+  }
+
+  .dog, .cat {
+    width: 80%;
+  }
+
+  .dog-img, .cat-img {
+    width: 80%;
+  }
 }

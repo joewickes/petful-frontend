@@ -2,13 +2,28 @@ import React from 'react';
 
 import '../styles/AdoptionPage.css';
 
+import dogPhoto from './../images/helena-lopes-wNRutxmyR8w-unsplash.jpg';
+import catPhoto from './../images/sophia-ayame-yak7zIjk8mg-unsplash.jpg';
+
 class AdoptionPage extends React.Component {
   state = {
     addingName: false,
     myName: null,
     listOfNames: ['name1', 'name2', 'name3', 'name4', 'name5'],
-    listOfDogObjs: [],
-    listOfCatObjs: [],
+    listOfDogObjs: [
+      {Name: 'Freddy', Breed: 'Golden Retriever', Gender: 'Male', Description: 'A beautiful golden color, happy and kind', Age: '5yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'Bertha', Breed: 'Golden Retriever', Gender: 'Female', Description: 'A beautiful golden color, happy and kind', Age: '6yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'George', Breed: 'Golden Retriever', Gender: 'Male', Description: 'A beautiful golden color, happy and kind', Age: '7yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'Cassidy', Breed: 'Golden Retriever', Gender: 'Female', Description: 'A beautiful golden color, happy and kind', Age: '3yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'Bucky', Breed: 'Golden Retriever', Gender: 'Male', Description: 'A beautiful golden color, happy and kind', Age: '1yo', 'Journey To Us': 'Found wandering outside our door'}
+    ],
+    listOfCatObjs: [
+      {Name: 'Paul', Breed: 'Calico', Gender: 'Male', Description: 'A beautiful speckled color, happy and mischevious', Age: '1yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'Peggy', Breed: 'Calico', Gender: 'Female', Description: 'A beautiful speckled color, happy and mischevious', Age: '3yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'Frank', Breed: 'Calico', Gender: 'Male', Description: 'A beautiful speckled color, happy and mischevious', Age: '7yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'Katniss', Breed: 'Calico', Gender: 'Female', Description: 'A beautiful speckled color, happy and mischevious', Age: '5yo', 'Journey To Us': 'Found wandering outside our door'},
+      {Name: 'Steve', Breed: 'Calico', Gender: 'Male', Description: 'A beautiful speckled color, happy and mischevious', Age: '2yo', 'Journey To Us': 'Found wandering outside our door'}
+    ],
     adoptionMessage: false,
   }
 
@@ -71,16 +86,16 @@ class AdoptionPage extends React.Component {
           
           <div className="dog">
             <div className="dog-img">
-              <img src='#' alt="A really good dog" />
+              <img src={dogPhoto} alt="A really good dog" />
             </div>
             <div className="dog-info">
               <ul className="dog-info-list">
-                <li>Name:</li>
-                <li>Breed:</li>
-                <li>Gender:</li>
-                <li>Description:</li>
-                <li>Age:</li>
-                <li>Journey To Us:</li>
+                <li><b>Name:</b> {this.state.listOfDogObjs[0].Name}</li>
+                <li><b>Breed:</b> {this.state.listOfDogObjs[0].Breed}</li>
+                <li><b>Gender:</b> {this.state.listOfDogObjs[0].Gender}</li>
+                <li><b>Description:</b> {this.state.listOfDogObjs[0].Description}</li>
+                <li><b>Age:</b> {this.state.listOfDogObjs[0].Age}</li>
+                <li><b>Journey To Us:</b> {this.state.listOfDogObjs[0]['Journey To Us']}</li>
               </ul>
             </div>
             {this.state.listOfNames[0] !== this.state.myName ? null 
@@ -91,16 +106,16 @@ class AdoptionPage extends React.Component {
           </div>
           <div className="cat">
             <div className="cat-img">
-              <img src='#' alt="A really sophisticated cat" />
+              <img src={catPhoto} alt="A really sophisticated cat" />
             </div>
             <div className="cat-info">
               <ul className="cat-info-list">
-                <li>Name:</li>
-                <li>Breed:</li>
-                <li>Gender:</li>
-                <li>Description:</li>
-                <li>Age:</li>
-                <li>Journey To Us:</li>
+                <li><b>Name:</b> {this.state.listOfCatObjs[0].Name}</li>
+                <li><b>Breed:</b> {this.state.listOfCatObjs[0].Breed}</li>
+                <li><b>Gender:</b> {this.state.listOfCatObjs[0].Gender}</li>
+                <li><b>Description:</b> {this.state.listOfCatObjs[0].Description}</li>
+                <li><b>Age:</b> {this.state.listOfCatObjs[0].Age}</li>
+                <li><b>Journey To Us:</b> {this.state.listOfCatObjs[0]['Journey To Us']}</li>
               </ul>
             </div>
             {this.state.listOfNames[0] !== this.state.myName ? null 
