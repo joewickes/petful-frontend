@@ -35,6 +35,8 @@ class AdoptionPage extends React.Component {
     timeout: null,
   }
 
+  intervalID = 0;
+
   handleInterval = () => {
     return setInterval(() => {
       if (!this.state.listOfNames || this.state.listOfNames[0] !== this.state.myName) {
@@ -71,11 +73,15 @@ class AdoptionPage extends React.Component {
               .then(resPeople => {
                 const people = [...resPeople];
                 this.setState({listOfDogObjs: dogs, listOfCatObjs: cats, listOfNames: people})
-                this.handleInterval();
+                this.intervalID = this.handleInterval();
               })
             
           })
       })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
 
   adoptDog = (e) => {
