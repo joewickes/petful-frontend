@@ -10,7 +10,7 @@ class AdoptionPage extends React.Component {
     count: 1,
     addingName: false,
     myName: null,
-    listOfNames: ['name1', 'name2', 'name3', 'name4', 'name5'],
+    listOfNames: ['name1', 'name2', 'name3', 'name4', 'name5', 'name6'],
     listOfDogObjs: [
       {Name: 'Freddy', Breed: 'Golden Retriever', Gender: 'Male', Description: 'A beautiful golden color, happy and kind', Age: '5yo', 'Journey To Us': 'Found wandering outside our door'},
       {Name: 'Bertha', Breed: 'Golden Retriever', Gender: 'Female', Description: 'A beautiful golden color, happy and kind', Age: '6yo', 'Journey To Us': 'Found wandering outside our door'},
@@ -161,7 +161,7 @@ class AdoptionPage extends React.Component {
           <div className="people-names">
             <p>Up to Adopt: </p>
             <ul className="people-list">
-              {this.state.listOfNames.map(name => {
+              {this.state.listOfNames.slice(0,6).map(name => {
                 return (<li key={name}>{name}</li>)
               })}
             </ul>
