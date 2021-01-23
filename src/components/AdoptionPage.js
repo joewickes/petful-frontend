@@ -4,34 +4,40 @@ import '../styles/AdoptionPage.css';
 
 import dogPhoto from './../images/helena-lopes-wNRutxmyR8w-unsplash.jpg';
 import catPhoto from './../images/sophia-ayame-yak7zIjk8mg-unsplash.jpg';
+import petsService from './../services/pets-service';
+import peopleService from './../services/people-service';
 
 class AdoptionPage extends React.Component {
   state = {
     count: 1,
     addingName: false,
     myName: null,
-    listOfNames: ['name1', 'name2', 'name3', 'name4', 'name5', 'name6'],
+    listOfNames: ['Loading...'],
     listOfDogObjs: [
-      {Name: 'Freddy', Breed: 'Golden Retriever', Gender: 'Male', Description: 'A beautiful golden color, happy and kind', Age: '5yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'Bertha', Breed: 'Golden Retriever', Gender: 'Female', Description: 'A beautiful golden color, happy and kind', Age: '6yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'George', Breed: 'Golden Retriever', Gender: 'Male', Description: 'A beautiful golden color, happy and kind', Age: '7yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'Cassidy', Breed: 'Golden Retriever', Gender: 'Female', Description: 'A beautiful golden color, happy and kind', Age: '3yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'Bucky', Breed: 'Golden Retriever', Gender: 'Male', Description: 'A beautiful golden color, happy and kind', Age: '1yo', 'Journey To Us': 'Found wandering outside our door'}
+      {
+        Name: 'Loading...',
+        Breed: 'Loading...',
+        Gender: 'Loading...',
+        Description: 'Loading...',
+        Age: 'Loading...',
+        'Journey To Us':  'Loading...',
+      }
     ],
-    listOfCatObjs: [
-      {Name: 'Paul', Breed: 'Calico', Gender: 'Male', Description: 'A beautiful speckled color, happy and mischevious', Age: '1yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'Peggy', Breed: 'Calico', Gender: 'Female', Description: 'A beautiful speckled color, happy and mischevious', Age: '3yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'Frank', Breed: 'Calico', Gender: 'Male', Description: 'A beautiful speckled color, happy and mischevious', Age: '7yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'Katniss', Breed: 'Calico', Gender: 'Female', Description: 'A beautiful speckled color, happy and mischevious', Age: '5yo', 'Journey To Us': 'Found wandering outside our door'},
-      {Name: 'Steve', Breed: 'Calico', Gender: 'Male', Description: 'A beautiful speckled color, happy and mischevious', Age: '2yo', 'Journey To Us': 'Found wandering outside our door'}
-    ],
+    listOfCatObjs: [{
+      Name: 'Loading...',
+      Breed: 'Loading...',
+      Gender: 'Loading...',
+      Description: 'Loading...',
+      Age: 'Loading...',
+      'Journey To Us':  'Loading...',
+    }],
     adoptionMessage: false,
     timeout: null,
   }
 
   handleInterval = () => {
     return setInterval(() => {
-      if (this.state.listOfNames[0] !== this.state.myName) {
+      if (!this.state.listOfNames || this.state.listOfNames[0] !== this.state.myName) {
         const newListOfNames = this.state.listOfNames;
         const newEndingName = newListOfNames.shift();
         newListOfNames.push(newEndingName);
@@ -55,7 +61,21 @@ class AdoptionPage extends React.Component {
   }
 
   componentDidMount() {
-    this.handleInterval();
+    petsService.getDogs()
+      .then(resDogs => {
+        const dogs = [...resDogs];
+        return petsService.getCats()
+          .then(resCats => {
+            const cats = [...resCats];
+            return peopleService.getPeople()
+              .then(resPeople => {
+                const people = [...resPeople];
+                this.setState({listOfDogObjs: dogs, listOfCatObjs: cats, listOfNames: people})
+                this.handleInterval();
+              })
+            
+          })
+      })
   }
 
   adoptDog = (e) => {
@@ -94,7 +114,6 @@ class AdoptionPage extends React.Component {
 
   updateTextValue = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     this.setState({myName: e.target.value})
   }
 
@@ -115,11 +134,12 @@ class AdoptionPage extends React.Component {
           : <h1>Let's Meet the Pets!</h1>}
         </section>
         <section className="pets">
-          
+          {this.state.listOfDogObjs !== null ? 
           <div className="dog">
             <div className="dog-img">
               <img src={dogPhoto} alt="A really good dog" />
             </div>
+            
             <div className="dog-info">
               <ul className="dog-info-list">
                 <li><b>Name:</b> {this.state.listOfDogObjs[0].Name}</li>
@@ -134,8 +154,9 @@ class AdoptionPage extends React.Component {
             : <div className="adopt-button-container">
               <button onClick={this.adoptDog}>Adopt</button>
             </div>}
-            
           </div>
+          : null }
+          {this.state.listOfCatObjs !== null ?
           <div className="cat">
             <div className="cat-img">
               <img src={catPhoto} alt="A really sophisticated cat" />
@@ -155,16 +176,19 @@ class AdoptionPage extends React.Component {
               <button onClick={this.adoptCat}>Adopt</button>
             </div>}
           </div>
+          : null}
           
         </section>
         <section className="people">
           <div className="people-names">
             <p>Up to Adopt: </p>
+            {this.state.listOfNames !== null ?
             <ul className="people-list">
               {this.state.listOfNames.slice(0,6).map(name => {
                 return (<li key={name}>{name}</li>)
               })}
             </ul>
+            : null}
           </div>
           <div className="add-my-name">
             {this.state.addingName ? <form className="add-name-form" onSubmit={this.addNameToList}>
