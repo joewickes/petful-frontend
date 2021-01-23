@@ -1,13 +1,13 @@
 const petsService = {
   getCats: () => {
-    return fetch('http://localhost:8000/api/cats')
+    return fetch('https://tranquil-journey-46938.herokuapp.com/api/cats')
       .then(result => {
         return result.json();
       })
     ;
   },
   getDogs: () => {
-    return fetch('http://localhost:8000/api/dogs')
+    return fetch('https://tranquil-journey-46938.herokuapp.com/api/dogs')
       .then(result => {
         return result.json();
       })
