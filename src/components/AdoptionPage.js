@@ -22,7 +22,7 @@ class AdoptionPage extends React.Component {
   addNameToList = (e) => {
     e.preventDefault();
     const newListOfNames = this.state.listOfNames;
-    newListOfNames.push(this.state.myName);
+    newListOfNames.unshift(this.state.myName);
     this.setState(({addingName: false, listOfNames: newListOfNames}))
   }
 
@@ -48,6 +48,11 @@ class AdoptionPage extends React.Component {
                 <li>Journey To Us:</li>
               </ul>
             </div>
+            {this.state.listOfNames[0] !== this.state.myName ? null 
+            : <div className="adopt-button-container">
+              <button>Adopt</button>
+            </div>}
+            
           </div>
           <div className="cat">
             <div className="cat-img">
@@ -63,9 +68,12 @@ class AdoptionPage extends React.Component {
                 <li>Journey To Us:</li>
               </ul>
             </div>
-            <div className="cat-info">
-            </div>
+            {this.state.listOfNames[0] !== this.state.myName ? null 
+            : <div className="adopt-button-container">
+              <button>Adopt</button>
+            </div>}
           </div>
+          
         </section>
         <section className="people">
           <div className="people-names">

@@ -74,3 +74,8 @@
 .add-my-name {
   width: auto;
 }
+
+.adopt-button-container {
+  width: auto;
+  margin-bottom: 15px;
+}
