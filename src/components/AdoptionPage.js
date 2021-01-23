@@ -7,6 +7,39 @@ class AdoptionPage extends React.Component {
     addingName: false,
     myName: null,
     listOfNames: ['name1', 'name2', 'name3', 'name4', 'name5'],
+    listOfDogObjs: [],
+    listOfCatObjs: [],
+    adoptionMessage: false,
+  }
+
+  adoptDog = (e) => {
+    e.preventDefault();
+
+    const newDogsObjs = this.state.listOfDogObjs;
+    newDogsObjs.shift();
+    const newListOfNames = this.state.listOfNames;
+    newListOfNames.shift();
+
+    this.setState({
+      myName: null, 
+      listOfDogObjs: newDogsObjs,
+      adoptionMessage: true,
+    })
+  }
+
+  adoptCat= (e) => {
+    e.preventDefault();
+
+    const newCatsObjs = this.state.listOfCatObjs;
+    newCatsObjs.shift();
+    const newListOfNames = this.state.listOfNames;
+    newListOfNames.shift();
+
+    this.setState({
+      myName: null, 
+      listOfCatObjs: newCatsObjs,
+      adoptionMessage: true,
+    })
   }
 
   startAddingName = () => {
@@ -31,9 +64,11 @@ class AdoptionPage extends React.Component {
     return (
       <main>
         <section className="meet-the-pets">
-          <h1>Let's Meet the Pets!</h1>
+          {this.state.adoptionMessage ? <h1>You have successfully adopted your pet!</h1> 
+          : <h1>Let's Meet the Pets!</h1>}
         </section>
         <section className="pets">
+          
           <div className="dog">
             <div className="dog-img">
               <img src='#' alt="A really good dog" />
@@ -50,7 +85,7 @@ class AdoptionPage extends React.Component {
             </div>
             {this.state.listOfNames[0] !== this.state.myName ? null 
             : <div className="adopt-button-container">
-              <button>Adopt</button>
+              <button onClick={this.adoptDog}>Adopt</button>
             </div>}
             
           </div>
@@ -70,7 +105,7 @@ class AdoptionPage extends React.Component {
             </div>
             {this.state.listOfNames[0] !== this.state.myName ? null 
             : <div className="adopt-button-container">
-              <button>Adopt</button>
+              <button onClick={this.adoptCat}>Adopt</button>
             </div>}
           </div>
           
