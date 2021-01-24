@@ -65,19 +65,27 @@ class AdoptionPage extends React.Component {
   componentDidMount() {
     petsService.getDogs()
       .then(resDogs => {
-        const dogs = [...resDogs];
-        return petsService.getCats()
-          .then(resCats => {
-            const cats = [...resCats];
-            return peopleService.getPeople()
-              .then(resPeople => {
-                const people = [...resPeople];
-                this.setState({listOfDogObjs: dogs, listOfCatObjs: cats, listOfNames: people})
-                this.intervalID = this.handleInterval();
-              })
-            
+
+        const dogsResult = petsService.getDogs;
+        const catsResult = petsService.getCats;
+        const peopleResult = peopleService.getPeople;
+
+        console.log('rd', resDogs);
+        
+
+        return Promise.all([dogsResult(), catsResult(), peopleResult()])
+          .then(values => {
+            console.log('RRRRRD', values);
+            const dogs = [...values[0]];
+            const cats = [...values[1]];
+            const people = [...values[2]];
+
+            this.setState({listOfDogObjs: dogs, listOfCatObjs: cats, listOfNames: people})
+            this.intervalID = this.handleInterval();
           })
+        ;
       })
+    ;
   }
 
   componentWillUnmount() {
