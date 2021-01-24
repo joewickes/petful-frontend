@@ -70,12 +70,8 @@ class AdoptionPage extends React.Component {
         const catsResult = petsService.getCats;
         const peopleResult = peopleService.getPeople;
 
-        console.log('rd', resDogs);
-        
-
         return Promise.all([dogsResult(), catsResult(), peopleResult()])
           .then(values => {
-            console.log('RRRRRD', values);
             const dogs = [...values[0]];
             const cats = [...values[1]];
             const people = [...values[2]];
@@ -198,7 +194,7 @@ class AdoptionPage extends React.Component {
             <p>Up to Adopt: </p>
             {this.state.listOfNames !== null ?
             <ul className="people-list">
-              {this.state.listOfNames.slice(0,6).map(name => {
+              {this.state.listOfNames.map(name => {
                 return (<li key={name}>{name}</li>)
               })}
             </ul>
