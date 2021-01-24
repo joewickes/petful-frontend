@@ -1,6 +1,6 @@
 const peopleService = {
   getPeople: () => {
-    return fetch('http://localhost:8000/api/people')
+    return fetch('https://tranquil-journey-46938.herokuapp.com/api/people')
       .then(result => {
         return result.json()
       })
