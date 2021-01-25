@@ -73,9 +73,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 Below is a sample use case for the app. Follow along with the annotations to see what the possibilities are!
 
 ![Home Page](./src/images/SS1.png?raw=true "Title")
-![Home Page](./src/images/SS2.png?raw=true "Title")
-![Home Page](./src/images/SS3.png?raw=true "Title")
-![Home Page](./src/images/SS4.png?raw=true "Title")
-![Home Page](./src/images/SS5.png?raw=true "Title")
-![Home Page](./src/images/SS6.png?raw=true "Title")
-![Home Page](./src/images/SS7.png?raw=true "Title")
+![Home Page Lower](./src/images/SS2.png?raw=true "Title")
+![Adoption Page](./src/images/SS3.png?raw=true "Title")
+![Adoption Page Add Name Button](./src/images/SS4.png?raw=true "Title")
+![Adoption Page Adding Name](./src/images/SS5.png?raw=true "Title")
+![Adoption Page Name Moving Up List](./src/images/SS6.png?raw=true "Title")
+![Adoption Page Adoption Options](./src/images/SS7.png?raw=true "Title")
+![Adoption Page Adoption Results](./src/images/SS8.png?raw=true "Title")
