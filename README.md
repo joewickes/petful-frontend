@@ -80,3 +80,8 @@ Below is a sample use case for the app. Follow along with the annotations to see
 ![Adoption Page Name Moving Up List](./src/images/SS6.png?raw=true "Title")
 ![Adoption Page Adoption Options](./src/images/SS7.png?raw=true "Title")
 ![Adoption Page Adoption Results](./src/images/SS8.png?raw=true "Title")
+
+## Tech Used
+- React Dom
+- React Router
+- React-scripts
