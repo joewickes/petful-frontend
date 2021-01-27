@@ -2,8 +2,16 @@ import React from 'react';
 
 import '../styles/AdoptionPage.css';
 
-import dogPhoto from './../images/helena-lopes-wNRutxmyR8w-unsplash.jpg';
-import catPhoto from './../images/sophia-ayame-yak7zIjk8mg-unsplash.jpg';
+import dogPhoto5 from './../images/dog5.jpg';
+import dogPhoto4 from './../images/dog4.jpg';
+import dogPhoto3 from './../images/dog3.jpg';
+import dogPhoto2 from './../images/dog2.jpg';
+import dogPhoto1 from './../images/dog1.jpg';
+import catPhoto5 from './../images/cat5.jpg';
+import catPhoto4 from './../images/cat4.jpg';
+import catPhoto3 from './../images/cat3.jpg';
+import catPhoto2 from './../images/cat2.jpg';
+import catPhoto1 from './../images/cat1.jpg';
 import petsService from './../services/pets-service';
 import peopleService from './../services/people-service';
 
@@ -31,6 +39,20 @@ class AdoptionPage extends React.Component {
       Age: 'Loading...',
       'Journey To Us':  'Loading...',
     }],
+    dogImages: [
+      dogPhoto1,
+      dogPhoto2,
+      dogPhoto3,
+      dogPhoto4,
+      dogPhoto5
+    ],
+    catImages: [
+      catPhoto1,
+      catPhoto2,
+      catPhoto3,
+      catPhoto4,
+      catPhoto5
+    ],
     adoptionMessage: false,
     timeout: null,
   }
@@ -45,18 +67,25 @@ class AdoptionPage extends React.Component {
         newListOfNames.push(newEndingName);
 
         if (this.state.count % 2 === 0) {
+          const newCatImgs = this.state.catImages;
+          const newEndCat = newCatImg.shift();
+          newCatImgs.push(newEndCat);
 
           const newListOfCats = this.state.listOfCatObjs;
           const newEndingCat = newListOfCats.shift();
           newListOfCats.push(newEndingCat);
 
-          this.setState({count: this.state.count + 1, listOfNames: newListOfNames, newListOfCats});
+          this.setState({count: this.state.count + 1, listOfNames: newListOfNames, newListOfCats, catImages: newCatImgs});
         } else {
+            const newDogImgs = this.state.dogImages;
+            const newEndDog = newDogImg.shift();
+            newDogImgs.push(newEndDog);
+
             const newListOfDogs = this.state.listOfDogObjs;
             const newEndingDog = newListOfDogs.shift();
             newListOfDogs.push(newEndingDog);
 
-            this.setState({count: this.state.count + 1, listOfNames: newListOfNames, newListOfDogs});
+            this.setState({count: this.state.count + 1, listOfNames: newListOfNames, newListOfDogs, dogImages: newDogImgs});
         }
       }
     }, 5000)
