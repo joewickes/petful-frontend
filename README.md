@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Live Project Link
+https://petful-frontend.vercel.app/
+
+## Backend Repo
+https://github.com/joewickes/petful-backend
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -79,4 +85,9 @@ Below is a sample use case for the app. Follow along with the annotations to see
 ![Adoption Page Adding Name](./src/images/SS5.png?raw=true "Title")
 ![Adoption Page Name Moving Up List](./src/images/SS6.png?raw=true "Title")
 ![Adoption Page Adoption Options](./src/images/SS7.png?raw=true "Title")
-![Adoption Page Adoption Results](./src/images/SS8.png?raw=true "Title") 
+![Adoption Page Adoption Results](./src/images/SS8.png?raw=true "Title")
+
+## Tech Used
+- React Dom
+- React Router
+- React-scripts
