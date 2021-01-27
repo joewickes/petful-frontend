@@ -57,6 +57,8 @@ class AdoptionPage extends React.Component {
     timeout: null,
   }
 
+  
+
   intervalID = 0;
 
   handleInterval = () => {
@@ -68,7 +70,7 @@ class AdoptionPage extends React.Component {
 
         if (this.state.count % 2 === 0) {
           const newCatImgs = this.state.catImages;
-          const newEndCat = newCatImg.shift();
+          const newEndCat = newCatImgs.shift();
           newCatImgs.push(newEndCat);
 
           const newListOfCats = this.state.listOfCatObjs;
@@ -78,7 +80,7 @@ class AdoptionPage extends React.Component {
           this.setState({count: this.state.count + 1, listOfNames: newListOfNames, newListOfCats, catImages: newCatImgs});
         } else {
             const newDogImgs = this.state.dogImages;
-            const newEndDog = newDogImg.shift();
+            const newEndDog = newDogImgs.shift();
             newDogImgs.push(newEndDog);
 
             const newListOfDogs = this.state.listOfDogObjs;
@@ -92,6 +94,7 @@ class AdoptionPage extends React.Component {
   }
 
   componentDidMount() {
+    
     const dogsResult = petsService.getDogs;
     const catsResult = petsService.getCats;
     const peopleResult = peopleService.getPeople;
@@ -171,7 +174,7 @@ class AdoptionPage extends React.Component {
           {this.state.listOfDogObjs !== null ? 
           <div className="dog">
             <div className="dog-img">
-              <img src={dogPhoto} alt="A really good dog" />
+              <img src={this.state.dogImages[0]} alt="A really good dog" />
             </div>
             
             <div className="dog-info">
@@ -193,7 +196,7 @@ class AdoptionPage extends React.Component {
           {this.state.listOfCatObjs !== null ?
           <div className="cat">
             <div className="cat-img">
-              <img src={catPhoto} alt="A really sophisticated cat" />
+              <img src={this.state.catImages[0]} alt="A really sophisticated cat" />
             </div>
             <div className="cat-info">
               <ul className="cat-info-list">
