@@ -117,6 +117,9 @@ class AdoptionPage extends React.Component {
 
   adoptDog = (e) => {
     e.preventDefault();
+    const newDogImgs = this.state.dogImages;
+    const newEndDog = newDogImgs.shift();
+    newDogImgs.push(newEndDog);
     const newDogsObjs = this.state.listOfDogObjs;
     const adoptedDog = newDogsObjs.shift();
     newDogsObjs.push(adoptedDog);
@@ -132,6 +135,9 @@ class AdoptionPage extends React.Component {
 
   adoptCat= (e) => {
     e.preventDefault();
+    const newCatImgs = this.state.catImages;
+    const newEndCat = newCatImgs.shift();
+    newCatImgs.push(newEndCat);
     const newCatsObjs = this.state.listOfCatObjs;
     const adoptedCat = newCatsObjs.shift();
     newCatsObjs.push(adoptedCat);
